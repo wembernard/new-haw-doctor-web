@@ -8,7 +8,7 @@ import { ApiService } from '../../shared';
   providers: [ApiService]
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   medicalExams;
 
   constructor(private api: ApiService) { }
