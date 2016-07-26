@@ -1,0 +1,18 @@
+@import '../../../index';
+
+dashboard {
+  display: flex;
+  .medical-exam {
+    margin: 0px 10px;
+    padding: 15px 0px;
+    border-bottom: 1px dashed $primary-color; 
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .code {
+    border: 2px solid $primary-color;
+    border-radius: 5px;
+    padding: 3px;
+  }
+}
