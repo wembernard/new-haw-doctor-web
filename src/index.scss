@@ -1,0 +1,93 @@
+/****************/
+/**   COLORS   **/
+/****************/
+$color-prune: rgba(79, 55, 101, 1);
+$color-brown: rgba(71, 56, 25, 1);
+$color-blue: #043c7c;
+
+$primary-color: $color-blue;
+$primary-color-light: lighten($primary-color, 15);
+$primary-color-lighter: lighten($primary-color, 40);
+$primary-color-lightest: lighten($primary-color, 65);
+$secondary-color: $color-prune;
+
+$box-background-color: rgba(249, 250, 255, 1);
+$header-background-color: rgba(243, 244, 249, 1);
+
+/***************/
+/**   FONTS   **/
+/***************/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/* Font variables */
+$font-open-sans: 'Open Sans', sans-serif;
+
+/* Default Fonts */
+$primary-font: $font-open-sans;
+$secondary-font: $font-open-sans;
+
+/****************/
+/**   LAYOUT   **/
+/****************/
+
+* {
+  font-family: $primary-font;
+  color: $primary-color;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: url('/assets/images/background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+button {
+  background-image: linear-gradient(
+    45deg,
+    $primary-color,
+    $primary-color-light
+  );
+  color: white;
+  border-radius: 50px;
+  border: none;
+  padding: 8px 50px;
+  &:focus { outline: 0; }
+  &:hover,&:active {
+    background-image: linear-gradient(
+      45deg,
+      lighten($primary-color, 10),
+      lighten($primary-color-light, 10)
+    );
+  }
+}
+
+input, textarea {
+  font-family: $primary-font;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid $primary-color-lightest;
+  /* &::placeholder {
+     color: $primary-color-lighter;
+  }*/
+  &:focus {
+    outline: 0;
+    border-bottom-color: $primary-color-light;
+  }
+}
+
+.block {
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  max-width: 800px;
+  background: $box-background-color;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
