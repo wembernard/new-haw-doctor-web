@@ -39,4 +39,37 @@ medical-exam {
     border: 1px solid rgba($primary-color, 0.5);
     width: 100%;
   }
+  .medical-form {
+    .question {
+      border: 1px solid $primary-color;
+      padding: 5px;
+      margin-bottom: 5px;
+      .answer {
+        color: white;
+        i {
+          color: white;
+        }
+        background-color: #043c7c;
+        border-radius: 5px;
+        height: 0;
+        opacity: 0;
+        visibility: 0;
+        transition: 
+          height 0.5s ease,
+          opacity 0.5s ease,
+          visibility 0.5s ease,
+          margin 0.5s ease,
+          padding 0.5s ease;
+      }
+      &.expanded {
+        .answer {
+          opacity: 1;
+          visibility: 1;
+          height: auto;
+          padding: 8px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 }

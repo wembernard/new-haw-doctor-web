@@ -13,9 +13,12 @@ import { ApiService } from '../../shared';
 export class MedicalExamComponent implements OnInit, OnDestroy {
   medicalExam;
   answers;
+  isExpanded;
   paramSub;
 
-  constructor(private api: ApiService, private route: ActivatedRoute) { }
+  constructor(private api: ApiService, private route: ActivatedRoute) {
+    this.isExpanded = false;
+  }
 
   ngOnInit() {
     this.paramSub = this.route.params.subscribe((params: { id: number }) => {
@@ -39,5 +42,10 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
 
   goBack() {
     window.history.back();
+  }
+
+  toggleAnswer() {
+    this.isExpanded = !this.isExpanded;
+    console.log(this.isExpanded);
   }
 }
