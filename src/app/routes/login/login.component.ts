@@ -14,7 +14,7 @@ export class LoginComponent {
   model = {
     email: '',
     password: ''
-  }
+  };
 
   constructor(private api: ApiService, private router: Router) { }
 
