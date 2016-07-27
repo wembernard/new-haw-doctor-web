@@ -18,19 +18,17 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.paramSub = this.route.params.subscribe(params => {
-      let id = +params['id'];
+    this.paramSub = this.route.params.subscribe((params: { id: number }) => {
+      let id = +params.id;
 
-      // Global data from medicalExam
+      /* Global data from medicalExam */
       this.api.call('medicalExams/' + id + '?filter[include]=employee&filter[include]=weights&filter[include]=pressures').then(res => {
         this.medicalExam = res.json() || {};
-        console.log(this.medicalExam);
       });
 
-      // Answers from medicalExam
+      /* Answers from medicalExam */
       this.api.call('medicalExams/' + id + '/answers?filter[include]=question').then(res => {
         this.answers = res.json() || [];
-        console.log(this.answers);
       });
     });
   }
