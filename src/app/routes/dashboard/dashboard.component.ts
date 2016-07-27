@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
   };
 
   gotoDetail(code: string) {
-    let link = ['/medical-exam', code];
-    this.router.navigate(link);
+    this.router.navigate(['/medical-exam', code]);
   }
 }

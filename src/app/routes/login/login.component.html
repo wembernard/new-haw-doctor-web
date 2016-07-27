@@ -1,0 +1,8 @@
+<section class="block">
+  <h3>S'identifier</h3>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <input type="email" name="email" placeholder="email" required [(ngModel)]="model.email">
+    <input type="password" name="password" placeholder="password" required [(ngModel)]="model.password">
+    <button type="submit" [disabled]="!loginForm.form.valid">S'identifier</button>
+  </form>
+</section>
