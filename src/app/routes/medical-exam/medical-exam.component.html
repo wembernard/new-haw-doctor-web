@@ -6,12 +6,14 @@
       <span>{{ medicalExam.employee.firstname }}</span>
     </div>
   </header>
+  <hr>
   <div class="medical-form">
     <h3>Questionnaire</h3>
     <p *ngIf="!answers || answers.length === 0">
       {{ medicalExam.employee.firstname }} n'a pas encore répondu au questionnaire.
     </p>
   </div>
+  <hr>
   <div class="measures">
     <h3>Mesures</h3>
     <h4>Tension</h4>

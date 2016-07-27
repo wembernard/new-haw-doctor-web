@@ -7,6 +7,10 @@ const routes: RouterConfig = [
     component: HomeComponent
   },
   {
+    path: 'login',
+    redirectTo: '/dashboard'
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent
   },

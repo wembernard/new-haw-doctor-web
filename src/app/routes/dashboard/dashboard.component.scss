@@ -9,6 +9,7 @@ dashboard {
     display: flex;
     justify-content: space-between;
     min-width: 500px;
+    cursor: pointer;
     &:last-child {
       border-bottom: none;
     }

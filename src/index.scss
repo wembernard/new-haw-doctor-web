@@ -57,6 +57,7 @@ button {
   border-radius: 50px;
   border: none;
   padding: 8px 50px;
+  cursor: pointer;
   &:focus { outline: 0; }
   &:hover,&:active {
     background-image: linear-gradient(
