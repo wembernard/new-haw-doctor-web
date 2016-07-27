@@ -1,5 +1,5 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { HomeComponent, DashboardComponent } from './routes';
+import { HomeComponent, DashboardComponent, MedicalExamComponent } from './routes';
 
 const routes: RouterConfig = [
   {
@@ -9,6 +9,10 @@ const routes: RouterConfig = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'medical-exam/:id',
+    component: MedicalExamComponent
   },
 ];
 

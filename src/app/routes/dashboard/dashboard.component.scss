@@ -6,6 +6,9 @@ dashboard {
     margin: 0px 10px;
     padding: 15px 0px;
     border-bottom: 1px dashed $primary-color; 
+    display: flex;
+    justify-content: space-between;
+    min-width: 500px;
     &:last-child {
       border-bottom: none;
     }

@@ -1,9 +1,8 @@
 <section class="block">
   <!--{{medicalExams}}-->
-  <div *ngFor="let exam of medicalExams" class="medical-exam">
+  <div *ngFor="let exam of medicalExams" class="medical-exam" (click)="gotoDetail(exam.id)">
     <span class="code">{{ exam.code }}</span>
-    <span>Employé N°{{ exam.employeeId }}</span>
-    <span>Formulaire N°{{ exam.formId }}</span>
+    <span>{{ exam.employee.firstname }} {{ exam.employee.lastname }}</span>
     <span>Date limite: {{ exam.deadline | date:'dd/MM/y' }}</span>
     <!--{{exam|json}}-->
   </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ApiService } from '../../shared';
 
 @Component({
@@ -11,12 +13,17 @@ import { ApiService } from '../../shared';
 export class DashboardComponent implements OnInit {
   medicalExams;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
-    this.api.call('medicalExams').then(res => {
+    this.api.call('medicalExams?filter[include]=employee').then(res => {
       this.medicalExams = res.json() || [];
       console.log(this.medicalExams);
     });
   };
+
+  gotoDetail(code: string) {
+    let link = ['/medical-exam', code];
+    this.router.navigate(link);
+  }
 }
