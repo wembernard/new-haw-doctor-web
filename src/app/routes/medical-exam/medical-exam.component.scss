@@ -176,4 +176,25 @@ medical-exam {
       }
     }
   }
+  .notes {
+    p {
+      margin-top: 0;
+    }
+    .datetime {
+      font-style: italic;
+      margin: 0;
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      button {
+        align-self: flex-end;
+        margin-top: 20px;
+      }
+    }
+  }
 }

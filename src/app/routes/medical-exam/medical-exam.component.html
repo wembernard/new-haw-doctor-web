@@ -58,5 +58,41 @@
       </template>
     </div>
   </div>
+  <hr>
+  <div class="notes">
+    <h3>Notes personnelles du médecin</h3>
+    <div class="note" *ngFor="let note of medicalNotes">
+      <p class="datetime">Le {{ note.time | date:'dd/MM/y' }} à {{ note.time | date:'HH:mm:ss' }}</p>
+      <p>{{ note.content }}</p>
+    </div>
+    <form (ngSubmit)="submitNote(doctorNote)" #doctorNoteForm="ngForm">
+      <textarea required placeholder="Prenez des notes" name="content" [(ngModel)]="doctorNote.content"></textarea>
+      <button type="submit" [disabled]="!doctorNoteForm.form.valid">Sauvegarder</button>
+    </form>
+  </div>
+  <hr>
+  <div class="notes">
+    <h3>Notes au patient</h3>
+    <div class="note" *ngFor="let note of medicalNotes">
+      <p class="datetime">Le {{ note.time | date:'dd/MM/y' }} à {{ note.time | date:'HH:mm:ss' }}</p>
+      <p>{{ note.content }}</p>
+    </div>
+    <form (ngSubmit)="submitNote(employeeNote)" #employeeNoteForm="ngForm">
+      <textarea required placeholder="Prenez des notes" name="content" [(ngModel)]="employeeNote.content"></textarea>
+      <button type="submit" [disabled]="!employeeNoteForm.form.valid">Sauvegarder</button>
+    </form>
+  </div>
+  <hr>
+  <div class="notes">
+    <h3>Notes à l'entreprise</h3>
+    <div class="note" *ngFor="let note of medicalNotes">
+      <p class="datetime">Le {{ note.time | date:'dd/MM/y' }} à {{ note.time | date:'HH:mm:ss' }}</p>
+      <p>{{ note.content }}</p>
+    </div>
+    <form (ngSubmit)="submitNote(companyNote)" #companyNoteForm="ngForm">
+      <textarea required placeholder="Prenez des notes" name="content" [(ngModel)]="companyNote.content"></textarea>
+      <button type="submit" [disabled]="!companyNoteForm.form.valid">Sauvegarder</button>
+    </form>
+  </div>
   <button (click)="goBack()">Retour</button>
 </section>
