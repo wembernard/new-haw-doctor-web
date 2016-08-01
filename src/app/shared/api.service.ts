@@ -8,9 +8,9 @@ export class ApiService {
   requestOptions: RequestOptions;
 
   constructor(private http: Http) {
-    this.url = 'http://api.demo.haw.k4met.com/api/';
-    // this.url = 'http://api.dev.haw.k4met.com/api/';
-     this.url = 'http://192.168.10.135:3000/api/';
+    // this.url = 'http://api.demo.haw.k4met.com/api/';
+    this.url = 'http://api.dev.haw.k4met.com/api/';
+    //  this.url = 'http://192.168.10.135:3000/api/';
     let headers = new Headers({
       'Content-Type': 'application/json'
     });

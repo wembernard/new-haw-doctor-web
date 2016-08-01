@@ -25,30 +25,35 @@
   <hr>
   <div class="measures">
     <h3>Mesures</h3>
-    <h4>Tension</h4>
-    <div class="pressures">
-      <p *ngIf="!medicalExam || medicalExam.pressures.length === 0">
-        {{ medicalExam.employee.firstname }} n'a pas encore mesuré sa tension.
-      </p>
+    <p *ngIf="(!medicalExam.pressures || medicalExam.pressures.length === 0) && (!medicalExam.weights || medicalExam.weights.length === 0)">
+      {{ medicalExam.employee.firstname }} n'a pas pris ni sa tension ni son poids.
+    </p>
+    <div class="widgets">
       <template ngIf="medicalExam || medicalExam.pressures.length > 0">
-        <div class="pressure" *ngFor="let pressure of medicalExam.pressures">
-          <p>Mesure prise le {{ pressure.time | date:'dd/MM/y' }} à {{ pressure.time | date:'HH:mm:ss' }}</p>
-          Diastole: {{ pressure.diastole }}
-          Systole: {{ pressure.systole }}
-          Pouls: {{ pressure.pulse }}
+        <div class="widget pressure" *ngFor="let pressure of medicalExam.pressures">
+          <div class="widget-header">
+            <h5>Tension bonne</h5>
+            <p>le {{ pressure.time | date:'dd/MM/y' }} à {{ pressure.time | date:'HH:mm:ss' }}</p>
+          </div>
+          <div class="widget-content">
+            <span class="systole">{{ pressure.systole }}</span>
+            <span class="diastole">{{ pressure.diastole }}</span>
+          </div>
+          <div class="widget-footer">
+            <span>{{ pressure.pulse }}</span>
+          </div>
         </div>
       </template>
-    </div>
-    <h4>Poids</h4>
-    <div class="weights">
-      <p *ngIf="!medicalExam || medicalExam.weights.length === 0">
-        {{ medicalExam.employee.firstname }} n'a pas encore mesuré son poids.
-      </p>
       <template ngIf="medicalExam || medicalExam.weights.length > 0">
-        <div class="weight" *ngFor="let weight of medicalExam.weights">
-          <p>Mesure prise le {{ weight.time | date:'dd/MM/y' }} à {{ weight.time | date:'HH:mm:ss' }}</p>
-          Poids: {{ weight.value }}kg
-          Masse graisseuse: {{ weight.fat }}%
+        <div class="widget weight" *ngFor="let weight of medicalExam.weights">
+          <div class="widget-header">
+            <h5>Poids</h5>
+            <p>le {{ weight.time | date:'dd/MM/y' }} à {{ weight.time | date:'HH:mm:ss' }}</p>
+          </div>
+          <div class="widget-content">
+            <span class="kg">{{ weight.value }}</span>
+            <span class="fat">{{ weight.fat }}</span>
+          </div>
         </div>
       </template>
     </div>

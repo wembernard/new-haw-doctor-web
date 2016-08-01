@@ -23,6 +23,7 @@ medical-exam {
     align-items: flex-start;
     & > div {
       margin-bottom: 20px;
+      width: 100%;
     }
     button {
       align-self: center;
@@ -38,6 +39,100 @@ medical-exam {
     margin: 20px 0;
     border: 1px solid rgba($primary-color, 0.5);
     width: 100%;
+  }
+  .widgets {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .widget {
+    width: 174px;
+    height: 317px;
+    .widget-header {
+      padding-top: 120px;
+      text-align: center;
+      h5 {
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: bolder;
+        font-stretch: ultra-condensed;
+        margin: 0;
+      }
+      p {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+    .widget-content {
+      display: flex;
+      flex-direction: row;
+      margin: 20px 0;
+      & > * {
+        display: inline-flex;
+        flex-direction: column;
+        width: 50%;
+        text-align: center;
+        font-size: 26px;
+        font-weight: bolder;
+        font-stretch: ultra-condensed;
+        line-height: 20px;
+        padding-bottom: 5px;
+        &:before {
+          text-transform: uppercase;
+          font-size: 12px;
+        }
+      }
+    }
+    .widget-footer {
+      background-color: rgba(#CECECE, 0.5);
+      border-radius: 5px;
+      margin: 0 20px;
+      padding: 5px 0;
+      font-size: 26px;
+      text-align: center;
+    }
+  }
+  .weight {
+    background: url('/assets/images/widget-poids@3x.png') no-repeat;
+    background-size: 100%;
+    .kg {
+      border-right: 1px solid $primary-color;
+      &:before {
+        content: 'KG';
+      }
+    }
+    .fat {
+      &:before {
+        content: '%';
+      }
+    }
+  }
+  .pressure {
+    background: url('/assets/images/widget-tension@3x.png') no-repeat;
+    background-size: 100%;
+    .systole {
+      border-right: 1px solid $primary-color;
+      &:before {
+        content: 'SYS';
+      }
+    }
+    .diastole {
+      &:before {
+        content: 'DIA';
+      }
+    }
+    .widget-footer {
+      span {
+        position: relative;
+        &:after {
+          content: 'BPM';
+          font-size: 12px;
+          position: absolute;
+          bottom: 4px;
+        }
+      }
+    }
   }
   .medical-form {
     .question {
