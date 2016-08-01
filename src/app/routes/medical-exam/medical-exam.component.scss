@@ -165,6 +165,15 @@ medical-exam {
           margin-top: 10px;
         }
       }
+      &.outcome2 {
+        background-color: rgba(yellow, 0.5);
+      }
+      &.outcome3 {
+        background-color: rgba(orange, 0.5);
+      }
+      &.outcome4 {
+        background-color: rgba(red, 0.5);
+      }
     }
   }
 }

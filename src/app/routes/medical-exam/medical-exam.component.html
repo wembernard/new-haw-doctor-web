@@ -13,7 +13,7 @@
       {{ medicalExam.employee.firstname }} n'a pas encore répondu au questionnaire.
     </p>
     <template ngIf="answers || answers.pressures.length > 0">
-      <div class="question" *ngFor="let answer of answers" [ngClass]="{expanded: isExpanded}" (click)="toggleAnswer()">
+      <div class="question outcome{{answer.outcome}}" *ngFor="let answer of answers" [ngClass]="{expanded: isExpanded}" (click)="toggleAnswer()">
         {{ answer.question.title }}
         <div class="answer">
           {{ answer.value }}
