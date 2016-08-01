@@ -16,6 +16,9 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   isExpanded;
   paramSub;
   medicalNotes;
+  doctorNotes;
+  employeeNotes;
+  companyNotes;
   doctorNote = { type: 'doctor', content: '' };
   employeeNote = { type: 'employee', content: '' };
   companyNote = { type: 'company', content: '' };
@@ -84,6 +87,17 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
       /* Answers from medicalExam */
       this.api.call('medicalExams/' + id + '/answers?filter[include]=question').then(res => {
         this.answers = res.json() || [];
+      });
+
+      /* Notes from medicalExam */
+      this.api.call('medicalExams/' + id + '/notes?filter[where][type]=doctor').then(res => {
+        this.doctorNotes = res.json() || [];
+      });
+      this.api.call('medicalExams/' + id + '/notes?filter[where][type]=employee').then(res => {
+        this.employeeNotes = res.json() || [];
+      });
+      this.api.call('medicalExams/' + id + '/notes?filter[where][type]=company').then(res => {
+        this.companyNotes = res.json() || [];
       });
     });
   }

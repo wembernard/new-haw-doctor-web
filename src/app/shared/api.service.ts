@@ -12,7 +12,8 @@ export class ApiService {
     this.url = 'http://api.dev.haw.k4met.com/api/';
     //  this.url = 'http://192.168.10.135:3000/api/';
     let headers = new Headers({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'thisIsADoctorAccessToken'
     });
     this.requestOptions = new RequestOptions({ headers: headers });
   };
