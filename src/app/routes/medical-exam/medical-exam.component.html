@@ -62,7 +62,7 @@
   <div class="notes">
     <h3>Notes personnelles du médecin</h3>
     <div class="note" *ngFor="let note of doctorNotes">
-      <p class="datetime">Le {{ note.time | date:'dd/MM/y' }} à {{ note.time | date:'HH:mm:ss' }}</p>
+      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm:ss' }}</p>
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(doctorNote)" #doctorNoteForm="ngForm">
@@ -74,7 +74,7 @@
   <div class="notes">
     <h3>Notes au patient</h3>
     <div class="note" *ngFor="let note of employeeNotes">
-      <p class="datetime">Le {{ note.time | date:'dd/MM/y' }} à {{ note.time | date:'HH:mm:ss' }}</p>
+      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm:ss' }}</p>
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(employeeNote)" #employeeNoteForm="ngForm">
@@ -86,7 +86,7 @@
   <div class="notes">
     <h3>Notes à l'entreprise</h3>
     <div class="note" *ngFor="let note of companyNotes">
-      <p class="datetime">Le {{ note.time | date:'dd/MM/y' }} à {{ note.time | date:'HH:mm:ss' }}</p>
+      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm:ss' }}</p>
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(companyNote)" #companyNoteForm="ngForm">
