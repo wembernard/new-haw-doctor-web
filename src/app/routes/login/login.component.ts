@@ -23,6 +23,7 @@ export class LoginComponent {
       .then((res) => {
         let response = res.json() || {};
         console.log(response);
+        localStorage.setItem('token', response.id);
         this.router.navigate(['/dashboard']);
       })
       .catch(function (error: any) {
