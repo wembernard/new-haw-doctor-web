@@ -26,7 +26,7 @@
   <div class="measures">
     <h3>Mesures</h3>
     <p *ngIf="(!medicalExam.pressures || medicalExam.pressures.length === 0) && (!medicalExam.weights || medicalExam.weights.length === 0)">
-      {{ medicalExam.employee.firstname }} n'a pas pris ni sa tension ni son poids.
+      {{ medicalExam.employee.firstname }} n'a pris ni sa tension ni son poids.
     </p>
     <div class="widgets">
       <template ngIf="medicalExam || medicalExam.pressures.length > 0">
