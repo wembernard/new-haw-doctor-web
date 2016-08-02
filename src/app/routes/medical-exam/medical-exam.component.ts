@@ -82,7 +82,7 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   private submitNote(note: any) {
     return this.api.call('medicalExams/' + this.medicalExam.id + '/notes', 'post', note).then(res => {
       note.content = '';
-      this.loadNotes();
+      this.loadNotes(note.type);
     }).catch(res => {
       console.error(res);
       alert('Une erreur s\'est produite, consulter la console pour plus d\'information.');
