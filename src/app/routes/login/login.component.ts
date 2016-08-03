@@ -6,8 +6,7 @@ import { ApiService, AuthService } from '../../shared';
 @Component({
   selector: 'login',
   template: require('./login.component.html'),
-  styles: [String(require('./login.component.scss'))],
-  providers: [ApiService, AuthService]
+  styles: [String(require('./login.component.scss'))]
 })
 
 export class LoginComponent {
@@ -16,7 +15,7 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor(private api: ApiService, private router: Router, private authService: AuthService) { }
+  constructor(private api: ApiService, private router: Router, public authService: AuthService) { }
 
   onSubmit() {
     this.authService.login(this.model.email, this.model.password).then(() => { 

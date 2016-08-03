@@ -5,7 +5,7 @@ import { ApiService } from '../shared';
 @Injectable()
 export class AuthService {
   // store the URL so we can redirect after logging in
-  redirectUrl: string;
+  public redirectUrl: string;
 
   constructor(private api: ApiService) { }
 
@@ -33,3 +33,5 @@ export class AuthService {
     return !!token;
   }
 }
+
+export const AUTH_SERVICE_PROVIDERS = [AuthService, ApiService];
