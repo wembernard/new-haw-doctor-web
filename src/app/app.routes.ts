@@ -1,5 +1,6 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import { HomeComponent, DashboardComponent, MedicalExamComponent, LoginComponent } from './routes';
+import { AuthGuard, AUTH_GUARD_PROVIDERS } from './shared';
 
 const routes: RouterConfig = [
   {
@@ -12,14 +13,17 @@ const routes: RouterConfig = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'medical-exam/:id',
-    component: MedicalExamComponent
+    component: MedicalExamComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
 export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes)
+  provideRouter(routes),
+  AUTH_GUARD_PROVIDERS
 ];

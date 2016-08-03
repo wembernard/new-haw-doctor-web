@@ -45,10 +45,12 @@ medical-exam {
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
   .widget {
     width: 174px;
     height: 317px;
+    margin-top: 10px;
     .widget-header {
       padding-top: 120px;
       text-align: center;
