@@ -64,13 +64,12 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
     console.log(this.isExpanded);
   }
 
-  private loadNotes(specificType?: string) {
+  loadNotes(specificType?: string) {
     if (specificType != null && ['doctor', 'employee', 'company'].indexOf(specificType) >= 0) {
       this.api.call('medicalExams/' + this.medicalExam.id + '/notes?filter[where][type]=' + specificType).then(res => {
         this[specificType + 'Notes'] = res.json() || [];
       });
-    }
-    else {
+    } else {
       for (let type of ['doctor', 'employee', 'company']) {
         this.api.call('medicalExams/' + this.medicalExam.id + '/notes?filter[where][type]=' + type).then(res => {
           this[type + 'Notes'] = res.json() || [];
@@ -79,7 +78,7 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
     }
   }
 
-  private submitNote(note: any) {
+  submitNote(note: any) {
     return this.api.call('medicalExams/' + this.medicalExam.id + '/notes', 'post', note).then(res => {
       note.content = '';
       this.loadNotes(note.type);
@@ -89,5 +88,4 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
       note.content = '';
     });
   }
-  
 }

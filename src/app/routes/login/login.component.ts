@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private api: ApiService, private router: Router, public authService: AuthService) { }
 
   onSubmit() {
-    this.authService.login(this.model.email, this.model.password).then(() => { 
+    this.authService.login(this.model.email, this.model.password).then(() => {
       let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
       this.router.navigate([redirect]);
     });
