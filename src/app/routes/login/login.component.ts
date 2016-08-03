@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../../shared';
+import { ApiService, AuthService } from '../../shared';
 
 @Component({
   selector: 'login',
   template: require('./login.component.html'),
   styles: [String(require('./login.component.scss'))],
-  providers: [ApiService]
+  providers: [ApiService, AuthService]
 })
 
 export class LoginComponent {
@@ -16,23 +16,12 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, private authService: AuthService) { }
 
   onSubmit() {
-    this.api.call('doctors/login', 'post', this.model)
-      .then((res) => {
-        let response = res.json() || {};
-        console.log(response);
-        localStorage.setItem('token', response.id);
-        this.router.navigate(['/dashboard']);
-      })
-      .catch(function (error: any) {
-        let errMsg = (error.message) ? error.message :
-          error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
-        alert('Impossible de vous identifier, vérifier la console pour plus d\informations');
-        return Promise.reject(error.message || error);
-      });
-
+    this.authService.login(this.model.email, this.model.password).then(() => { 
+      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/dashboard';
+      this.router.navigate([redirect]);
+    });
   }
 }
