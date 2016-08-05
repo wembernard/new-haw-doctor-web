@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
+import { AuthService } from '../../shared';
+
 @Component({
   selector: 'haw-header',
   template: require('./header.component.html'),
@@ -9,5 +11,12 @@ import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 })
 
 export class HeaderComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
+
+  isLoggedIn = this.authService.isLoggedIn;
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }
