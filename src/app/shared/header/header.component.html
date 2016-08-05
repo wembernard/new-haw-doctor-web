@@ -4,7 +4,7 @@
     <h2>Application médecin</h2>
   </div>
   <div class="log-state">
-    <a [routerLink]="['/login']" *ngIf="!isLoggedIn()">Se connecter</a>
-    <a (click)="logout()" *ngIf="isLoggedIn()">Se déconnecter</a>
+    <a [routerLink]="['/login']" *ngIf="!isLoggedIn()">> Se connecter</a>
+    <a (click)="logout()" *ngIf="isLoggedIn()">[x] Se déconnecter</a>
   </div>
 </header>

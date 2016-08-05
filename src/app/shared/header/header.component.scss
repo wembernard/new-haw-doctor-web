@@ -1,5 +1,10 @@
+  @import '../../../index';
+
   header {
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     .logo {
       margin: 10px;
       padding-top: 2px;
@@ -20,6 +25,15 @@
         text-transform: uppercase;
         font-size: 12px;
         margin: 0;
+      }
+    }
+    .log-state {
+      padding: 20px 30px;
+      a {
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
       }
     }
   }
