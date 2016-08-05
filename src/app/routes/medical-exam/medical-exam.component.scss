@@ -1,6 +1,8 @@
 @import '../../../index';
 
 medical-exam {
+  display: flex;
+  flex-direction: row;
   section {
     padding: 20px;
   }
@@ -19,15 +21,17 @@ medical-exam {
     }
   }
   .block {
+    width: 46%;
     margin-bottom: 20px;
     align-items: flex-start;
     & > div {
       margin-bottom: 20px;
       width: 100%;
     }
-    button {
-      align-self: center;
-    }
+  }
+  .operations {
+    display: flex;
+    justify-content: space-between;
   }
   .code {
     border: 2px solid $primary-color;
@@ -189,7 +193,7 @@ medical-exam {
     }
     textarea {
       width: 100%;
-      min-height: 100px;
+      min-height: 50px;
     }
     form {
       display: flex;

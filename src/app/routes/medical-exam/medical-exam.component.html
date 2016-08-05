@@ -1,6 +1,6 @@
 <section class="block" *ngIf="medicalExam">
   <header>
-    <div class="code">{{ medicalExam.code }}</div>
+    <div class="code">Date limite: {{ medicalExam.deadline | date:'dd/MM/y' }}</div>
     <div class="name">
       <span class="lastname">{{ medicalExam.employee.lastname }}</span>
       <span>{{ medicalExam.employee.firstname }}</span>
@@ -58,6 +58,13 @@
       </template>
     </div>
   </div>
+</section>
+<section class="block" *ngIf="medicalExam">
+  <div class="operations">
+    <button (click)="goBack()">Retour</button>
+    <button>Finaliser</button>
+    <button>Prendre un rendez-vous</button>
+  </div>
   <hr>
   <div class="notes">
     <h3>Notes personnelles du médecin</h3>
@@ -66,7 +73,7 @@
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(doctorNote)" #doctorNoteForm="ngForm">
-      <textarea required placeholder="Prenez des notes" name="content" [(ngModel)]="doctorNote.content"></textarea>
+      <textarea required placeholder="Prenez des notes" name="content" rows="4" [(ngModel)]="doctorNote.content"></textarea>
       <button type="submit" [disabled]="!doctorNoteForm.form.valid">Sauvegarder</button>
     </form>
   </div>
@@ -94,5 +101,4 @@
       <button type="submit" [disabled]="!companyNoteForm.form.valid">Sauvegarder</button>
     </form>
   </div>
-  <button (click)="goBack()">Retour</button>
 </section>
