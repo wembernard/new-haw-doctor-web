@@ -1,0 +1,14 @@
+<template ngIf="results">
+  {{results|json}}
+  <!--<div *ngFor="let theme of results.themes">
+    <div *ngFor="let subtheme of theme.subthemes">
+      <div class="question outcome{{answer.outcome}}" *ngFor="let answer of subtheme.answers" [ngClass]="{expanded: isExpanded}" (click)="toggleAnswer()">
+        {{ answer.question.title }}
+        <div class="answer">
+          {{ answer.value }}
+          <i *ngIf="!answer.value">Sans réponse</i>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</template>
