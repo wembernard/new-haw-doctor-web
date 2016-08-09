@@ -30,24 +30,29 @@ export class MedicalFormComponent implements OnInit {
         /** BUILDING DATA STRUCTURE */
         // Build themes array
         if (!this.results.themes[answer['question']['theme']]) {
-          this.results.themes[answer['question']['theme']] = { outcome: 0, subthemes: {} };
+          this.results.themes[answer['question']['theme']] = { outcome: 0, isExpanded: false, subthemes: {} };
         }
         /** Build subthemes array */
         if (!this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']]) {
-          this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']] = { outcome: 0, answers: [] };
+          this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']] = { outcome: 0, isExpanded: false, answers: [] };
         }
+
+        /** CHECK ANSWER EXPANSION */
+        answer.isExpanded = (answer.outcome > 1);
 
         /** FEED ANSWER */
         this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].answers.push(answer);
 
-        /** UPDATING OUTCOME */
-        // Update subtheme outcome if necessary
+        /** UPDATING OUTCOME & EXPANSION */
+        // Update subtheme outcome & expansion if necessary
         if (this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].outcome < answer.outcome) {
           this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].outcome = answer.outcome;
+          this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].isExpanded = answer.isExpanded || this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].isExpanded;
         }
-        // Update theme outcome if necessary
+        // Update theme outcome & expansion if necessary
         if (this.results.themes[answer['question']['theme']].outcome < answer.outcome) {
           this.results.themes[answer['question']['theme']].outcome = answer.outcome;
+          this.results.themes[answer['question']['theme']].isExpanded = answer.isExpanded || this.results.themes[answer['question']['theme']].isExpanded;
         }
         // Update results outcome if necessary
         if (this.results.outcome < answer.outcome) {
@@ -55,6 +60,7 @@ export class MedicalFormComponent implements OnInit {
         }
       }
       this.processed = true;
+      console.log(this.results);
     });
   }
 
@@ -62,9 +68,13 @@ export class MedicalFormComponent implements OnInit {
     return Object.keys(obj);
   }
 
-  public toggleAnswer() {
-    this.isExpanded = !this.isExpanded;
-    console.log(this.isExpanded);
+  public toggleExpansion(event, obj) {
+    console.log(obj);
+    console.log(event);
+    event.stopPropagation();
+    // this.results
+    obj.isExpanded = !obj.isExpanded;
+    console.log(obj.isExpanded);
   }
 
 }

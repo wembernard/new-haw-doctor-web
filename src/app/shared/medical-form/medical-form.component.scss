@@ -7,10 +7,38 @@ medical-form {
   $outcome4-color: red;
 
   div {
+    & > div {
+      display: none;
+    }
+    &.expanded {
+      & > div {
+        display: block;
+      }
+    }
     border: 1px solid $primary-color;
     padding: 5px;
     margin-bottom: 5px;
     cursor: pointer;
+    position: relative;
+    &.theme, &.subtheme, &.question {
+      &:after {
+        content: '+';
+        border: 1px solid $primary-color;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &.expanded {
+        &:after {
+          content: '-';
+        }
+      }
+    }
     p {
       margin: 0;
       margin-bottom: 5px;
