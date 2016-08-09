@@ -18,6 +18,17 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.api.call('medicalExams?filter[include]=employee').then(res => {
       this.medicalExams = res.json() || [];
+      if (this.medicalExams.length > 0) {
+        this.medicalExams.sort((a: any, b: any) => {
+          if (a.outcome < b.outcome) {
+            return 1;
+          } else if (a.outcome > b.outcome) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+      }
       console.log(this.medicalExams);
     });
   };
