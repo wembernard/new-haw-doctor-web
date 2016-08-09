@@ -10,7 +10,7 @@ import { ApiService } from '../../shared';
 })
 
 export class MedicalFormComponent implements OnInit {
-  @Input('medicalExamId') medicalExamId: number;
+  @Input() medicalExamId: number;
 
   results: any;
   processed: boolean;
