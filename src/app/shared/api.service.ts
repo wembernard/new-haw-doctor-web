@@ -34,7 +34,7 @@ export class ApiService {
     } else {
       promise = this.http[verb](this.url + resource, this.requestOptions).toPromise();
     }
-    
+
     return promise.catch(err => {
       /** Unauthorized */
       if (err.status === 401) {
@@ -43,7 +43,7 @@ export class ApiService {
         // navigate to the login page
         this.router.navigate(['/login']);
       }
-    })
+    });
   };
 
   private prepareHeaders() {
