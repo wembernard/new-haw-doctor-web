@@ -12,11 +12,9 @@ import { ApiService } from '../../shared';
 export class MedicalFormComponent implements OnInit {
   results: any;
   processed: boolean;
-  isExpanded: boolean;
 
   constructor(private api: ApiService) { 
     this.processed = false;
-    this.isExpanded = false;
   }
 
   @Input('medicalExamId') medicalExamId: number;
@@ -60,7 +58,6 @@ export class MedicalFormComponent implements OnInit {
         }
       }
       this.processed = true;
-      console.log(this.results);
     });
   }
 
@@ -69,12 +66,7 @@ export class MedicalFormComponent implements OnInit {
   }
 
   public toggleExpansion(event, obj) {
-    console.log(obj);
-    console.log(event);
     event.stopPropagation();
-    // this.results
     obj.isExpanded = !obj.isExpanded;
-    console.log(obj.isExpanded);
   }
-
 }
