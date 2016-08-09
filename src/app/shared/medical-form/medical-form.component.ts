@@ -10,14 +10,14 @@ import { ApiService } from '../../shared';
 })
 
 export class MedicalFormComponent implements OnInit {
+  @Input('medicalExamId') medicalExamId: number;
+
   results: any;
   processed: boolean;
 
-  constructor(private api: ApiService) { 
+  constructor(private api: ApiService) {
     this.processed = false;
   }
-
-  @Input('medicalExamId') medicalExamId: number;
 
   ngOnInit() {
     /* Answers from medicalExam */
@@ -45,7 +45,7 @@ export class MedicalFormComponent implements OnInit {
         // Update subtheme outcome & expansion if necessary
         if (this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].outcome < answer.outcome) {
           this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].outcome = answer.outcome;
-          this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].isExpanded = answer.isExpanded || this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].isExpanded;
+          this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].isExpanded = answer.isExpanded || this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].isExpanded;
         }
         // Update theme outcome & expansion if necessary
         if (this.results.themes[answer['question']['theme']].outcome < answer.outcome) {
@@ -65,7 +65,7 @@ export class MedicalFormComponent implements OnInit {
     return Object.keys(obj);
   }
 
-  public toggleExpansion(event, obj) {
+  public toggleExpansion(event: MouseEvent, obj: any) {
     event.stopPropagation();
     obj.isExpanded = !obj.isExpanded;
   }
