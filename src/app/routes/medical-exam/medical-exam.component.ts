@@ -21,9 +21,7 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   employeeNote = { type: 'employee', content: '' };
   companyNote = { type: 'company', content: '' };
 
-  constructor(private api: ApiService, private route: ActivatedRoute) {
-    this.isExpanded = false;
-  }
+  constructor(private api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.paramSub = this.route.params.subscribe((params: { id: number }) => {
