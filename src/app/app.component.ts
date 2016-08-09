@@ -11,5 +11,5 @@ import { HeaderComponent } from './shared';
 })
 
 export class AppComponent {
-  constructor() { }
+
 }

@@ -11,9 +11,9 @@ import { AuthService } from '../../shared';
 })
 
 export class HeaderComponent {
-  constructor(private router: Router, private authService: AuthService) { }
-
   isLoggedIn = this.authService.isLoggedIn;
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   logout() {
     this.authService.logout();
