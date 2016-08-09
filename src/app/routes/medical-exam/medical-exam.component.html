@@ -9,18 +9,7 @@
   <hr>
   <div class="medical-form">
     <h3>Questionnaire</h3>
-    <p *ngIf="!answers || answers.length === 0">
-      {{ medicalExam.employee.firstname }} n'a pas encore répondu au questionnaire.
-    </p>
-    <template ngIf="answers && answers.length > 0">
-      <div class="question outcome{{answer.outcome}}" *ngFor="let answer of answers" [ngClass]="{expanded: isExpanded}" (click)="toggleAnswer()">
-        {{ answer.question.title }}
-        <div class="answer">
-          {{ answer.value }}
-          <i *ngIf="!answer.value">Sans réponse</i>
-        </div>
-      </div>
-    </template>
+    <medical-form *ngIf="medicalExam && medicalExam.id && medicalExam.id > 0" [medicalExamId]="medicalExam.id"></medical-form>
   </div>
   <hr>
   <div class="measures">

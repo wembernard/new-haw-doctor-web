@@ -11,8 +11,13 @@ import { ApiService } from '../../shared';
 
 export class MedicalFormComponent implements OnInit {
   results: any;
+  processed: boolean;
+  isExpanded: boolean;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) { 
+    this.processed = false;
+    this.isExpanded = false;
+  }
 
   @Input('medicalExamId') medicalExamId: number;
 
@@ -20,12 +25,12 @@ export class MedicalFormComponent implements OnInit {
     /* Answers from medicalExam */
     this.api.call('medicalExams/' + this.medicalExamId + '/answers?filter[include]=question').then(res => {
       let answers = res.json() || [];
-      this.results = { outcome: 0, themes: [] };
+      this.results = { outcome: 0, themes: {} };
       for (let answer of answers) {
         /** BUILDING DATA STRUCTURE */
         // Build themes array
         if (!this.results.themes[answer['question']['theme']]) {
-          this.results.themes[answer['question']['theme']] = { outcome: 0, subthemes: [] };
+          this.results.themes[answer['question']['theme']] = { outcome: 0, subthemes: {} };
         }
         /** Build subthemes array */
         if (!this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']]) {
@@ -34,7 +39,7 @@ export class MedicalFormComponent implements OnInit {
 
         /** FEED ANSWER */
         this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].answers.push(answer);
-        
+
         /** UPDATING OUTCOME */
         // Update subtheme outcome if necessary
         if (this.results.themes[answer['question']['theme']].subthemes[answer['question']['subtheme']].outcome < answer.outcome) {
@@ -49,7 +54,17 @@ export class MedicalFormComponent implements OnInit {
           this.results.outcome = answer.outcome;
         }
       }
-      console.log(this.results);
+      this.processed = true;
     });
   }
+
+  public objectToArray(obj: Object): string[] {
+    return Object.keys(obj);
+  }
+
+  public toggleAnswer() {
+    this.isExpanded = !this.isExpanded;
+    console.log(this.isExpanded);
+  }
+
 }
