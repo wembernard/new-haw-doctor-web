@@ -61,6 +61,9 @@ medical-form {
       &.subtheme:after {
         top: 23px;
       }
+      &:last-child:after {
+        height: 0;
+      }
     }
     &.answer {
       padding-left: 0;
