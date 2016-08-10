@@ -16,9 +16,10 @@ export class DashboardComponent implements OnInit {
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
-    this.api.call('medicalExams?filter[include]=employee').then(res => {
+    this.api.call('medicalExams/examsWithOutcomeAndStatus').then(res => { 
+      console.log('loaded');
       this.medicalExams = res.json() || [];
-      console.log(this.medicalExams);
+      // console.log(this.medicalExams);
     });
   };
 

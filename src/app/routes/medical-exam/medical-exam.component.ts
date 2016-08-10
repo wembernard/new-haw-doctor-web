@@ -33,7 +33,6 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
       /* Global data from medicalExam */
       this.api.call('medicalExams/' + id + '?filter[include]=employee&filter[include]=weights&filter[include]=pressures').then(res => {
         this.medicalExam = res.json() || {};
-
         /* Notes from medicalExam */
         this.loadNotes();
       });
@@ -41,7 +40,7 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
       /* Answers from medicalExam */
       this.api.call('medicalExams/' + id + '/answers?filter[include]=question').then(res => {
         this.answers = res.json() || [];
-      });
+        });
     });
   }
 
@@ -51,6 +50,21 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
 
   goBack() {
     window.history.back();
+  }
+  finalize(){
+    console.log("j'ai terminé")
+     let data={
+      medicalExamId:this.medicalExam.id
+    };
+    this.api.call('examFinished/','post',data).then(res=>{console.log('done');});
+  }
+
+  appointment(){
+    console.log("j'ai pris un rdv")
+     let data={
+      medicalExamId:this.medicalExam.id
+    };
+    this.api.call('appointments/','post',data).then(res=>{console.log(res);});
   }
 
   onSubmitEmploteeNote() {
@@ -77,6 +91,8 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+
 
   submitNote(note: any) {
     return this.api.call('medicalExams/' + this.medicalExam.id + '/notes', 'post', note).then(res => {
