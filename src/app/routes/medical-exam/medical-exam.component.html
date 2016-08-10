@@ -55,15 +55,15 @@
 </section>
 <section class="block" *ngIf="medicalExam">
   <div class="operations">
-    <button (click)="goBack()">Retour</button>
+    <button class="secondary" (click)="goBack()">Retour</button>
     <button class="success" (click)="finalize()">Finaliser</button>
-    <button class="alert" (click)="appointment()">Prendre un rendez-vous</button>
+    <button class="alert" (click)="appointment()">Demander un rendez-vous</button>
   </div>
   <hr>
   <div class="notes">
     <h3>Notes personnelles du médecin</h3>
     <div class="note" *ngFor="let note of doctorNotes">
-      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm:ss' }}</p>
+      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm' }}</p>
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(doctorNote)" #doctorNoteForm="ngForm">
@@ -75,7 +75,7 @@
   <div class="notes">
     <h3>Notes au patient</h3>
     <div class="note" *ngFor="let note of employeeNotes">
-      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm:ss' }}</p>
+      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm' }}</p>
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(employeeNote)" #employeeNoteForm="ngForm">
@@ -87,7 +87,7 @@
   <div class="notes">
     <h3>Notes à l'entreprise</h3>
     <div class="note" *ngFor="let note of companyNotes">
-      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm:ss' }}</p>
+      <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm' }}</p>
       <p>{{ note.content }}</p>
     </div>
     <form (ngSubmit)="submitNote(companyNote)" #companyNoteForm="ngForm">
