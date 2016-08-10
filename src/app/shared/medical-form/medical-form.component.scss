@@ -8,7 +8,7 @@ medical-form {
 
   div {
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     cursor: pointer;
     position: relative;
     padding-left: 30px;
@@ -25,21 +25,41 @@ medical-form {
     &.theme, &.subtheme, &.question {
       &:before {
         content: '+';
-        font-weight: bolder;
         border: 1px solid $primary-color;
-        width: 15px;
-        height: 15px;
+        width: 12px;
+        height: 12px;
         position: absolute;
-        top: 8px;
+        top: 6px;
         left: 5px;
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        font-size: 14px;
+        line-height: 12px;
       }
-      &.expanded {
-        &:before {
-          content: '-';
-        }
+      &.expanded:before {
+        content: '-';
+      }
+      &.theme:before {
+        top: 10px;
+      }
+      &.subtheme:before {
+        top: 9px;
+      }
+      &:after {
+        content: '';
+        height: 100%;
+        width: 1px;
+        background-color: $primary-color;
+        position: absolute;
+        top: 20px;
+        left: 12px;
+      }
+      &.theme:after {
+        top: 24px;
+      }
+      &.subtheme:after {
+        top: 23px;
       }
     }
     &.answer {
@@ -50,18 +70,21 @@ medical-form {
     }
     p {
       margin: 0;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
   }
 
   .theme {
     font-size: 18px;
+    font-weight: bolder;
   }
   .subtheme {
     font-size: 16px;
+    font-weight: bold;
   }
   .question {
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: normal;
   }
   .answer {
     font-size: 12px;
