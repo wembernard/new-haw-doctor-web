@@ -12,7 +12,9 @@ export class ApiService {
   constructor(private http: Http, private router: Router) {
     // this.url = 'http://api.demo.haw.k4met.com/api/';
     // this.url = 'http://api.dev.temp.k4met.com/api/';
-    this.url = 'http://api.demo.temp.k4met.com/api/';
+    let hostname = window.location.hostname;
+    this.url = 'http://' + ((hostname === 'localhost') ? 'localhost:3000' : ('api' + hostname.substring(hostname.indexOf('.')))) + '/api/';
+    // this.url = 'http://api.demo.temp.k4met.com/api/';
     //  this.url = 'http://192.168.10.135:3000/api/';
     let headers = new Headers({
       'Content-Type': 'application/json',

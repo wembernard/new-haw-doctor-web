@@ -16,13 +16,14 @@ export class DashboardComponent implements OnInit {
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
-    this.api.call('medicalExams?filter[include]=employee').then(res => {
+    this.api.call('medicalExams/examsWithOutcomeAndStatus').then(res => { 
+      console.log('loaded');
       this.medicalExams = res.json() || [];
       if (this.medicalExams.length > 0) {
         this.medicalExams.sort((a: any, b: any) => {
-          if (a.outcome < b.outcome) {
+          if (a.outcomeMax < b.outcomeMax) {
             return 1;
-          } else if (a.outcome > b.outcome) {
+          } else if (a.outcomeMax > b.outcomeMax) {
             return -1;
           } else {
             return 0;
