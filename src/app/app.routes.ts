@@ -1,5 +1,5 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { HomeComponent, DashboardComponent, MedicalExamComponent, LoginComponent } from './routes';
+import { HomeComponent, DashboardComponent, MedicalExamComponent, LoginComponent, MeComponent } from './routes';
 import { AuthGuard, AUTH_GUARD_PROVIDERS } from './shared';
 
 const routes: RouterConfig = [
@@ -8,12 +8,17 @@ const routes: RouterConfig = [
     component: HomeComponent
   },
   {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: 'me',
+    component: MeComponent,
     canActivate: [AuthGuard]
   },
   {

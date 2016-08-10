@@ -1,0 +1,32 @@
+<section class="block">
+  <h3>Mon profil</h3>
+  <form *ngIf="profile" (ngSubmit)="onSubmit()" #profileForm="ngForm">
+    <div class="form-group">
+      <label for="gender">Civilité</label>
+      <select class="form-control" id="gender" required>
+        <option *ngFor="let g of ['homme', 'femme']" [value]="g">{{g}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="firstname">Prénom</label>
+      <input type="text" id="firstname" name="firstname" [(ngModel)]="profile.firstname" required>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Nom</label>
+      <input type="text" id="lastname" name="lastname" [(ngModel)]="profile.lastname" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Téléphone</label>
+      <input type="text" id="phone" name="phone" [(ngModel)]="profile.phone" required>
+    </div>
+    <div class="form-group">
+      <label for="birthdate">Date de naissance</label>
+      <input type="text" id="birthdate" name="birthdate" [(ngModel)]="profile.birthdate" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Adresse email</label>
+      <input type="text" id="email" name="email" [(ngModel)]="profile.email" required>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Sauvegarder</button>
+  </form>
+</section>

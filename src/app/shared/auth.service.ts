@@ -14,6 +14,7 @@ export class AuthService {
       .then((res) => {
         let response = res.json() || {};
         localStorage.setItem('token', response.id);
+        localStorage.setItem('userId', response.userId);
       })
       .catch(function (error: any) {
         let errMsg = (error.message) ? error.message :
@@ -26,6 +27,11 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+  }
+
+  getUserId(): number {
+    return localStorage.getItem('userId');
   }
 
   isLoggedIn(): boolean {
