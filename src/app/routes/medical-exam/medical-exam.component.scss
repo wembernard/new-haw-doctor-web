@@ -10,13 +10,29 @@ medical-exam {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    .name {
+    align-items: center;
+    .left {
+      display: flex;
+      flex-direction: column;
+      .job {
+        font-size: 18px;
+      }
+      .deadline {
+        margin-top: 10px;
+        border-top: 1px solid $primary-color;
+        padding-top: 10px;
+      }
+    }
+    .right {
       display: flex;
       flex-direction: column;
       font-size: 24px;
       font-weight: bolder;
       .lastname {
         text-transform: uppercase;
+      }
+      .age {
+        font-weight: lighter;
       }
     }
   }
@@ -32,12 +48,6 @@ medical-exam {
   .operations {
     display: flex;
     justify-content: space-between;
-  }
-  .code {
-    border: 2px solid $primary-color;
-    border-radius: 5px;
-    padding: 3px;
-    height: 100%;
   }
   hr {
     margin: 20px 0;
@@ -137,49 +147,6 @@ medical-exam {
           position: absolute;
           bottom: 4px;
         }
-      }
-    }
-  }
-  .medical-form {
-    .question {
-      border: 1px solid $primary-color;
-      padding: 5px;
-      margin-bottom: 5px;
-      cursor: pointer;
-      .answer {
-        color: white;
-        i {
-          color: white;
-        }
-        background-color: #043c7c;
-        border-radius: 5px;
-        height: 0;
-        opacity: 0;
-        visibility: 0;
-        transition: 
-          height 0.5s ease,
-          opacity 0.5s ease,
-          visibility 0.5s ease,
-          margin 0.5s ease,
-          padding 0.5s ease;
-      }
-      &.expanded {
-        .answer {
-          opacity: 1;
-          visibility: 1;
-          height: auto;
-          padding: 8px;
-          margin-top: 10px;
-        }
-      }
-      &.outcome2 {
-        background-color: rgba(yellow, 0.5);
-      }
-      &.outcome3 {
-        background-color: rgba(orange, 0.5);
-      }
-      &.outcome4 {
-        background-color: rgba(red, 0.5);
       }
     }
   }

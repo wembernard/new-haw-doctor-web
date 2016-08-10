@@ -1,19 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ApiService } from '../../shared';
+import { ApiService, MedicalFormComponent } from '../../shared';
 
 @Component({
   selector: 'medical-exam',
   template: require('./medical-exam.component.html'),
   styles: [String(require('./medical-exam.component.scss'))],
-  providers: [ApiService]
+  providers: [ApiService],
+  directives: [MedicalFormComponent]
 })
 
 export class MedicalExamComponent implements OnInit, OnDestroy {
   medicalExam;
-  answers;
-  isExpanded;
   paramSub;
   doctorNotes;
   employeeNotes;
@@ -22,9 +21,7 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   employeeNote = { type: 'employee', content: '' };
   companyNote = { type: 'company', content: '' };
 
-  constructor(private api: ApiService, private route: ActivatedRoute) {
-    this.isExpanded = false;
-  }
+  constructor(private api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.paramSub = this.route.params.subscribe((params: { id: number }) => {
@@ -36,11 +33,6 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
         /* Notes from medicalExam */
         this.loadNotes();
       });
-
-      /* Answers from medicalExam */
-      this.api.call('medicalExams/' + id + '/answers?filter[include]=question').then(res => {
-        this.answers = res.json() || [];
-        });
     });
   }
 
@@ -71,11 +63,6 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
     this.api.call('medicalExams/' + this.medicalExam.id + '/notes', 'post', this.doctorNote).then(res => {
       this.doctorNote.content = '';
     });
-  }
-
-  toggleAnswer() {
-    this.isExpanded = !this.isExpanded;
-    console.log(this.isExpanded);
   }
 
   loadNotes(specificType?: string) {

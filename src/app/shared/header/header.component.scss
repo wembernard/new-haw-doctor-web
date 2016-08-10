@@ -1,0 +1,40 @@
+  @import '../../../index';
+
+  header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+    .logo {
+      margin: 10px;
+      padding-top: 2px;
+      padding-bottom: 5px;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      h1 {
+        color: white;
+        text-transform: uppercase;
+        font-size: 20px;
+        margin: 0;
+      }
+      h2 {
+        color: white;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+    .log-state {
+      padding: 20px 30px;
+      a {
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }

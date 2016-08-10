@@ -1,0 +1,27 @@
+<template [ngIf]="results && processed">
+  <div *ngFor="let theme of objectToArray(results.themes)" 
+      class="theme outcome{{results.themes[theme].outcome}}" 
+      [ngClass]="{expanded: results.themes[theme].isExpanded}" (click)="toggleExpansion($event, results.themes[theme])">
+    <p>{{theme}}</p>
+    <div *ngFor="let subtheme of objectToArray(results.themes[theme].subthemes)" 
+        class="subtheme outcome{{results.themes[theme].subthemes[subtheme].outcome}}" 
+        [ngClass]="{expanded: results.themes[theme].subthemes[subtheme].isExpanded}" (click)="toggleExpansion($event, results.themes[theme].subthemes[subtheme])">
+      <p>{{subtheme}}</p>
+      <div class="question outcome{{answer.outcome}}" 
+          *ngFor="let answer of results.themes[theme].subthemes[subtheme].answers" 
+          [ngClass]="{expanded: answer.isExpanded}" (click)="toggleExpansion($event, answer)">
+        <p>{{ answer.question.title }}</p>
+        <div class="answer">
+          {{ answer.value }}
+          <i *ngIf="!answer.value">Sans réponse</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<p *ngIf="processed && (!results || results.outcome == 0)">
+  Le patient n'a pas encore répondu au questionnaire.
+</p>
+<p *ngIf="!processed">
+  Le formulaire est en cours de traitement...
+</p>

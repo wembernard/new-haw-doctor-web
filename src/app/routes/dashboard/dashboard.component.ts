@@ -19,7 +19,18 @@ export class DashboardComponent implements OnInit {
     this.api.call('medicalExams/examsWithOutcomeAndStatus').then(res => { 
       console.log('loaded');
       this.medicalExams = res.json() || [];
-      // console.log(this.medicalExams);
+      if (this.medicalExams.length > 0) {
+        this.medicalExams.sort((a: any, b: any) => {
+          if (a.outcomeMax < b.outcomeMax) {
+            return 1;
+          } else if (a.outcomeMax > b.outcomeMax) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+      }
+      console.log(this.medicalExams);
     });
   };
 

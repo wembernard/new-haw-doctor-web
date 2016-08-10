@@ -1,26 +1,20 @@
 <section class="block" *ngIf="medicalExam">
   <header>
-    <div class="code">Date limite: {{ medicalExam.deadline | date:'dd/MM/y' }}</div>
-    <div class="name">
+    <div class="left">
+      <span class="job">Assistante de direction</span>
+      <span>chez <strong>Habitat France</strong></span>
+      <span class="deadline">Date limite: {{ medicalExam.deadline | date:'dd/MM/y' }}</span>
+    </div>
+    <div class="right">
       <span class="lastname">{{ medicalExam.employee.lastname }}</span>
       <span>{{ medicalExam.employee.firstname }}</span>
+      <span class="age">34 ans</span>
     </div>
   </header>
   <hr>
   <div class="medical-form">
     <h3>Questionnaire</h3>
-    <p *ngIf="!answers || answers.length === 0">
-      {{ medicalExam.employee.firstname }} n'a pas encore répondu au questionnaire.
-    </p>
-    <template ngIf="answers || answers.pressures.length > 0">
-      <div class="question outcome{{answer.outcome}}" *ngFor="let answer of answers" [ngClass]="{expanded: isExpanded}" (click)="toggleAnswer()">
-        {{ answer.question.title }}
-        <div class="answer">
-          {{ answer.value }}
-          <i *ngIf="!answer.value">Sans réponse</i>
-        </div>
-      </div>
-    </template>
+    <medical-form *ngIf="medicalExam && medicalExam.id && medicalExam.id > 0" [medicalExamId]="medicalExam.id"></medical-form>
   </div>
   <hr>
   <div class="measures">
@@ -62,8 +56,8 @@
 <section class="block" *ngIf="medicalExam">
   <div class="operations">
     <button (click)="goBack()">Retour</button>
-    <button (click)="finalize()">Finaliser</button>
-    <button (click)="appointment()">Prendre un rendez-vous</button>
+    <button class="success" (click)="finalize()">Finaliser</button>
+    <button class="alert" (click)="appointment()">Prendre un rendez-vous</button>
   </div>
   <hr>
   <div class="notes">

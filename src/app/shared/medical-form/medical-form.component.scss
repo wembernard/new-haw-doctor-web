@@ -1,0 +1,73 @@
+@import '../../../index';
+
+medical-form {
+  $outcome1-color: white;
+  $outcome2-color: yellow;
+  $outcome3-color: #FF8C00;
+  $outcome4-color: red;
+
+  div {
+    & > div {
+      display: none;
+    }
+    &.expanded {
+      & > div {
+        display: block;
+      }
+    }
+    border: 1px solid $primary-color;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: relative;
+    &.theme, &.subtheme, &.question {
+      &:after {
+        content: '+';
+        border: 1px solid $primary-color;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &.expanded {
+        &:after {
+          content: '-';
+        }
+      }
+    }
+    p {
+      margin: 0;
+      margin-bottom: 5px;
+    }
+  }
+
+  .theme {
+    font-size: 18px;
+  }
+  .subtheme {
+    font-size: 16px;
+  }
+  .question {
+    font-size: 14px;
+  }
+  .answer {
+    font-size: 12px;
+  }
+
+  .outcome1 {
+    background-color: rgba($outcome1-color, 1);
+  }
+  .outcome2 {
+    background-color: rgba($outcome2-color, 0.5);
+  }
+  .outcome3 {
+    background-color: rgba($outcome3-color, 0.5);
+  }
+  .outcome4 {
+    background-color: rgba($outcome4-color, 0.5);
+  }
+}
