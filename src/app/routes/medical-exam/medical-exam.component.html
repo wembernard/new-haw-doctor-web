@@ -42,7 +42,7 @@
         <div class="widget weight" *ngFor="let weight of medicalExam.weights">
           <div class="widget-header">
             <h5>Poids</h5>
-            <p>le {{ weight.time | date:'dd/MM/y' }} à {{ weight.time | date:'HH:mm:ss' }}</p>
+            <p>le {{ weight.created | date:'dd/MM/y' }} à {{ weight.created | date:'HH:mm:ss' }}</p>
           </div>
           <div class="widget-content">
             <span class="kg">{{ weight.value }}</span>
