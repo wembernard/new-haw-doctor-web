@@ -7,6 +7,12 @@ medical-form {
   $outcome4-color: red;
 
   div {
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 30px;
+
     & > div {
       display: none;
     }
@@ -15,28 +21,31 @@ medical-form {
         display: block;
       }
     }
-    border: 1px solid $primary-color;
-    padding: 5px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    position: relative;
+
     &.theme, &.subtheme, &.question {
-      &:after {
+      &:before {
         content: '+';
+        font-weight: bolder;
         border: 1px solid $primary-color;
         width: 15px;
         height: 15px;
         position: absolute;
-        top: 5px;
-        right: 5px;
+        top: 8px;
+        left: 5px;
         display: inline-flex;
         justify-content: center;
         align-items: center;
       }
       &.expanded {
-        &:after {
+        &:before {
           content: '-';
         }
+      }
+    }
+    &.answer {
+      padding-left: 0;
+      &:before {
+        content: '=>';
       }
     }
     p {
@@ -58,16 +67,16 @@ medical-form {
     font-size: 12px;
   }
 
-  .outcome1 {
+  .outcome1:before {
     background-color: rgba($outcome1-color, 1);
   }
-  .outcome2 {
-    background-color: rgba($outcome2-color, 0.5);
+  .outcome2:before {
+    background-color: rgba($outcome2-color, 1);
   }
-  .outcome3 {
-    background-color: rgba($outcome3-color, 0.5);
+  .outcome3:before {
+    background-color: rgba($outcome3-color, 1);
   }
-  .outcome4 {
-    background-color: rgba($outcome4-color, 0.5);
+  .outcome4:before {
+    background-color: rgba($outcome4-color, 0.8);
   }
 }
