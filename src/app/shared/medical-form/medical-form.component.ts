@@ -21,7 +21,7 @@ export class MedicalFormComponent implements OnInit {
 
   ngOnInit() {
     /* Answers from medicalExam */
-    this.api.call('medicalExams/' + this.medicalExamId + '/answers?filter[include]=question').then(res => {
+    this.api.call('medicalExams/' + this.medicalExamId + '/answers?filter[include]=question&filter[order]=questionId').then(res => {
       let answers = res.json() || [];
       this.results = { outcome: 0, themes: {} };
       for (let answer of answers) {
