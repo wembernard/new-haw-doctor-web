@@ -1,8 +1,8 @@
 <section class="block" *ngIf="medicalExam">
   <header>
     <div class="left">
-      <span class="job">Assistante de direction</span>
-      <span>chez <strong>Habitat France</strong></span>
+      <span class="job">{{ medicalExam.employee.jobName }}</span>
+      <span>chez <strong>{{ medicalExam.employee.company.name }}</strong></span>
       <span class="deadline">Date limite: {{ medicalExam.deadline | date:'dd/MM/y' }}</span>
     </div>
     <div class="right">

@@ -17,6 +17,7 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   doctorNotes;
   employeeNotes;
   companyNotes;
+  companyData;
   doctorNote = { type: 'doctor', content: '' };
   employeeNote = { type: 'employee', content: '' };
   companyNote = { type: 'company', content: '' };
@@ -26,14 +27,20 @@ export class MedicalExamComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramSub = this.route.params.subscribe((params: { id: number }) => {
       let id = +params.id;
-
+      let data={id:id};
       /* Global data from medicalExam */
-      this.api.call('medicalExams/' + id + '?filter[include]=employee&filter[include]=weights&filter[include]=pressures').then(res => {
+      // this.api.call('medicalExams/' + id + '?filter[include]=employee&filter[include]=weights&filter[include]=pressures').then(res => {
+      this.api.call('medicalExams/examsWithEmployeeCompanyTests','post',data).then(res => {
         this.medicalExam = res.json() || {};
         /* Notes from medicalExam */
+        this.medicalExam.employee.jobName=this.capitalizeFirstLetter(this.medicalExam.employee.jobName);
         this.loadNotes();
-      });
+      })
     });
+  }
+
+  capitalizeFirstLetter(stringToCapitalize) {
+    return stringToCapitalize.charAt(0).toUpperCase() + stringToCapitalize.slice(1);
   }
 
   ngOnDestroy() {
