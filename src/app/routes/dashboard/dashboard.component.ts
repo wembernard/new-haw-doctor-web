@@ -17,20 +17,18 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.api.call('medicalExams/examsWithOutcomeAndStatus').then(res => { 
-      console.log('loaded');
       this.medicalExams = res.json() || [];
       if (this.medicalExams.length > 0) {
         this.medicalExams.sort((a: any, b: any) => {
-          if (a.outcomeMax < b.outcomeMax) {
+          if (a.outcome < b.outcome) {
             return 1;
-          } else if (a.outcomeMax > b.outcomeMax) {
+          } else if (a.outcome > b.outcome) {
             return -1;
           } else {
             return 0;
           }
         });
       }
-      console.log(this.medicalExams);
     });
   };
 
