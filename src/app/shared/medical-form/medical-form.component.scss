@@ -67,9 +67,6 @@ medical-form {
     }
     &.answer {
       padding-left: 0;
-      &:before {
-        content: '=>';
-      }
     }
     p {
       margin: 0;

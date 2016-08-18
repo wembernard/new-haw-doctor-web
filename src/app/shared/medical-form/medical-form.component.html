@@ -12,8 +12,16 @@
           [ngClass]="{expanded: answer.isExpanded}" (click)="toggleExpansion($event, answer)">
         <p>{{ answer.question.title }}</p>
         <div class="answer">
-          {{ answer.value }}
-          <i *ngIf="!answer.value">Sans réponse</i>
+          <ul>
+          <li *ngFor="let value of answer.value">
+            {{ value }}
+          </li>
+          </ul>
+<!--         <div *ngFor="let value of answer.value">
+        <span>value</span>
+        </div> 
+        {{answer.value}} -->
+        <i *ngIf="!answer.value">Sans réponse</i>
         </div>
       </div>
     </div>

@@ -27,6 +27,11 @@ export class MedicalFormComponent implements OnInit {
       for (let answer of answers) {
         /** BUILDING DATA STRUCTURE */
         // Build themes array
+        //transform answers as an array to display them as an item list
+        answer.value=JSON.parse(answer.value);
+        if(!Array.isArray(answer.value)){
+          answer.value=[answer.value]
+        }
         if (!this.results.themes[answer['question']['theme']]) {
           this.results.themes[answer['question']['theme']] = { outcome: 0, isExpanded: false, subthemes: {} };
         }
@@ -57,6 +62,7 @@ export class MedicalFormComponent implements OnInit {
           this.results.outcome = answer.outcome;
         }
       }
+ 
       this.processed = true;
     });
   }
