@@ -14,16 +14,18 @@ export class MeComponent implements OnInit {
   
   constructor(private api: ApiService, public authService: AuthService,private router: Router) { }
 
-   formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+  formatDate(date) {
+    if(!date) {return null}
+      var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
 
-    return [year, month, day].join('-');
+    let formatedDate = [year, month, day].join('-');
+    return formatedDate;
   }
   ngOnInit() {
     let userId = this.authService.getUserId();

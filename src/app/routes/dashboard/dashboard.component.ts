@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
           }
         });
       }
-    });
+    }).catch((err)=>console.log(err));
   };
 
   gotoDetail(code: string) {

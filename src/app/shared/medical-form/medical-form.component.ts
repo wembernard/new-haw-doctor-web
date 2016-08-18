@@ -32,8 +32,6 @@ export class MedicalFormComponent implements OnInit {
         if(!Array.isArray(answer.value)){
           answer.value= (!answer.value) ? [] : [answer.value];
         }
-        console.log(answer);
-        console.log(answer.value)
         if (!this.results.themes[answer['question']['theme']]) {
           this.results.themes[answer['question']['theme']] = { outcome: 0, isExpanded: false, subthemes: {} };
         }
