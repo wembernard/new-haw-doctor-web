@@ -30,8 +30,10 @@ export class MedicalFormComponent implements OnInit {
         //transform answers as an array to display them as an item list
         answer.value=JSON.parse(answer.value);
         if(!Array.isArray(answer.value)){
-          answer.value=[answer.value]
+          answer.value= (!answer.value) ? [] : [answer.value];
         }
+        console.log(answer);
+        console.log(answer.value)
         if (!this.results.themes[answer['question']['theme']]) {
           this.results.themes[answer['question']['theme']] = { outcome: 0, isExpanded: false, subthemes: {} };
         }

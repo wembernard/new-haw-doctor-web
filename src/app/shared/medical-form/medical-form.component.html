@@ -17,11 +17,7 @@
             {{ value }}
           </li>
           </ul>
-<!--         <div *ngFor="let value of answer.value">
-        <span>value</span>
-        </div> 
-        {{answer.value}} -->
-        <i *ngIf="!answer.value">Sans réponse</i>
+        <i *ngIf="answer.value.length==0">Sans réponse</i>
         </div>
       </div>
     </div>
