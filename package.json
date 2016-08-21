@@ -1,4 +1,6 @@
 {
+  "name": "haw-doctor-web",
+  "version": "0.0.1",
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
@@ -61,7 +63,8 @@
     "serve": "gulp serve",
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
-    "test:auto": "gulp test:auto"
+    "test:auto": "gulp test:auto",
+    "clean": "gulp clean"
   },
   "eslintConfig": {
     "root": true,
