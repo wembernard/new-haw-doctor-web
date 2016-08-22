@@ -73,7 +73,7 @@
   </div>
   <hr>
   <div class="notes">
-    <h3>Notes au patient</h3>
+    <h3>Compte-rendu au patient</h3>
     <div class="note" *ngFor="let note of employeeNotes">
       <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm' }}</p>
       <p>{{ note.content }}</p>
@@ -85,7 +85,7 @@
   </div>
   <hr>
   <div class="notes">
-    <h3>Notes à l'entreprise</h3>
+    <h3>Compte-rendu à l'entreprise</h3>
     <div class="note" *ngFor="let note of companyNotes">
       <p class="datetime">Le {{ note.created | date:'dd/MM/y' }} à {{ note.created | date:'HH:mm' }}</p>
       <p>{{ note.content }}</p>
