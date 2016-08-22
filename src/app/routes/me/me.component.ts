@@ -32,9 +32,18 @@ export class MeComponent implements OnInit {
         };
       })
       .catch((err) => {
+        let alertMessage = `Une erreur s'est produite: ` + err.statusText;
+        if (err._body) {
+          try {
+            let tmpBody = JSON.parse(err._body);
+            if (tmpBody && tmpBody.error && tmpBody.error.message) {
+              alertMessage = tmpBody.error.message;
+            }
+          } catch (e) { }
+        }
         this.alert = {
           class: 'error',
-          message: `Une erreur s'est produite: ` + err.statusText
+          message: alertMessage
         };
         console.log(err);
       });
@@ -44,7 +53,7 @@ export class MeComponent implements OnInit {
     if (!date) {
       return null
     }
-    
+
     let dateObj = new Date(date);
     let month = '' + (dateObj.getMonth() + 1);
     let day = '' + dateObj.getDate();
