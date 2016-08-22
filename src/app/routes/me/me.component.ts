@@ -19,7 +19,7 @@ export class MeComponent implements OnInit {
     let userId = this.authService.getUserId();
     this.api.call('doctors/' + userId).then((res) => {
       this.profile = res.json() || {};
-      // this.profile.birthdate = this.formatDate(this.profile.birthdate);
+      this.profile.birthdate = this.formatDate(this.profile.birthdate);
     });
   }
 
@@ -38,5 +38,26 @@ export class MeComponent implements OnInit {
         };
         console.log(err);
       });
+  }
+
+  formatDate(date: string): string {
+    if (!date) {
+      return null
+    }
+    
+    let dateObj = new Date(date);
+    let month = '' + (dateObj.getMonth() + 1);
+    let day = '' + dateObj.getDate();
+    let year = dateObj.getFullYear();
+
+    if (month.length < 2) {
+      month = '0' + month;
+    }
+
+    if (day.length < 2) {
+      day = '0' + day;
+    }
+
+    return [year, month, day].join('-');
   }
 }
