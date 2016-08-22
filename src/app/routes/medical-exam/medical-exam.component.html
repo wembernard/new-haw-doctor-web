@@ -2,7 +2,7 @@
   <header>
     <div class="left">
       <span class="job">{{ medicalExam.employee.jobName }}</span>
-      <span>chez <strong>{{ medicalExam.employee.company.name }}</strong></span>
+      <span>chez <strong *ngIf="medicalExam.employee.company">{{ medicalExam.employee.company.name }}</strong></span>
       <span class="deadline">Date limite: {{ medicalExam.deadline | date:'dd/MM/y' }}</span>
     </div>
     <div class="right">
@@ -46,7 +46,7 @@
           </div>
           <div class="widget-content">
             <span class="kg">{{ weight.value }}</span>
-            <span class="fat">{{ weight.fat }}</span>
+            <span class="bmi">{{ weight.fat }}</span>
           </div>
         </div>
       </template>
