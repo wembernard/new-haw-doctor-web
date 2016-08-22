@@ -16,6 +16,7 @@ medical-exam {
       flex-direction: column;
       .job {
         font-size: 18px;
+        text-transform: capitalize;
       }
       .deadline {
         margin-top: 10px;
