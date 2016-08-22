@@ -12,18 +12,18 @@
           [ngClass]="{expanded: answer.isExpanded}" (click)="toggleExpansion($event, answer)">
         <p>{{ answer.question.title }}</p>
         <div class="answer">
-          <ul>
-          <li *ngFor="let value of answer.value">
-            {{ value }}
-          </li>
+          <span *ngIf="answer.value.length > 0 && !answer.isArray">{{ answer.value }}</span>
+          <ul *ngIf="answer.value.length > 1 && answer.isArray">
+            <li *ngFor="let value of answer.value">{{ value }}</li>
           </ul>
-        <i *ngIf="answer.value.length==0">Sans réponse</i>
+          <i *ngIf="answer.value.length == 0">Sans réponse</i>
         </div>
       </div>
     </div>
   </div>
 </template>
 <p *ngIf="processed && (!results || results.outcome == 0)">
+  {{processed|json}} {{results|json}}
   Le patient n'a pas encore répondu au questionnaire.
 </p>
 <p *ngIf="!processed">

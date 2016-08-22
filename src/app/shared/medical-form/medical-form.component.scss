@@ -88,6 +88,10 @@ medical-form {
   }
   .answer {
     font-size: 12px;
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
   }
 
   .outcome1:before {
