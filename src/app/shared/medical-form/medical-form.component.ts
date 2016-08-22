@@ -38,7 +38,7 @@ export class MedicalFormComponent implements OnInit {
         /** CHECK ANSWER EXPANSION */
         answer.isExpanded = (answer.outcome > 1);
 
-        /** DISPLAY FEATURES **/
+        /** DISPLAY FEATURES */
         answer.isArray = Array.isArray(answer.value);
 
         /** FEED ANSWER */
@@ -60,13 +60,9 @@ export class MedicalFormComponent implements OnInit {
           this.results.outcome = answer.outcome;
         }
       }
- 
+
       this.processed = true;
     });
-  }
-
-  public isArray(something): boolean {
-    return Array.isArray(something);
   }
 
   public objectToArray(obj: Object): string[] {

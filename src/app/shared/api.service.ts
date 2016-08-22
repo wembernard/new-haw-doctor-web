@@ -45,6 +45,8 @@ export class ApiService {
         // navigate to the login page
         this.router.navigate(['/login']);
       }
+
+      return Promise.reject(err);
     });
   };
 

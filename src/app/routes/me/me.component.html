@@ -1,4 +1,7 @@
 <section class="block">
+  <div *ngIf="alert" class="alert {{ alert.class }}">
+    {{ alert.message }}    
+  </div>
   <h3>Mon profil</h3>
   <form *ngIf="profile" (ngSubmit)="onSubmit()" #profileForm="ngForm">
     <div class="form-group">

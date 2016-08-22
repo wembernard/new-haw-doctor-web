@@ -17,4 +17,17 @@ me {
     align-self: center;
     margin-top: 20px;
   }
+  .alert {
+    padding: 10px 50px;
+    color: black;
+    border-radius: 5px;
+    &.success {
+      background-color: rgba(#49d450, 0.5);
+      border: 1px solid #49d450;
+    }
+    &.error {
+      background-color: rgba(#d44950, 0.5);
+      border: 1px solid #d44950;
+    }
+  }
 }
